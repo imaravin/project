@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/satellite.gif",
+        "source": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/src/main/res/drawable-hdpi/satellite.gif"
+    },
+    {
+        "merged": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/tracking_icon2.png",
+        "source": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/src/main/res/drawable-hdpi/tracking_icon2.png"
+    },
+    {
+        "merged": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/com_msg.png",
+        "source": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/src/main/res/drawable-hdpi/com_msg.png"
+    },
+    {
+        "merged": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
+        "source": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/blue.png",
+        "source": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/src/main/res/drawable-hdpi/blue.png"
+    },
+    {
+        "merged": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/tracking_icon1.png",
+        "source": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/src/main/res/drawable-hdpi/tracking_icon1.png"
+    },
+    {
+        "merged": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/status.gif",
+        "source": "/home/local/ZOHOCORP/aravinth-pt997/AndroidStudioProjects/TrackingSystem/app/src/main/res/drawable-hdpi/status.gif"
+    }
+]
