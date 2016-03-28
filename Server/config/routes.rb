@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  get 'index/sendmail'
   get 'index/signup'
 
   get 'index/signin'
