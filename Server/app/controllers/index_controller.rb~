@@ -36,7 +36,7 @@ class IndexController < ApplicationController
         :to => mail,
         :subject => "Enter the code" ,
         :text => text
-        render :json => text
+        render :json => 'success'
   end
 
    
