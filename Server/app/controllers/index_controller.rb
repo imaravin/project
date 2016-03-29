@@ -26,10 +26,19 @@ class IndexController < ApplicationController
       render :json => text
       end
 
-     def sendmail
-      CodeMailer.keymail.deliver
-      render :json => "success"
-     end
+  def sendmail
+
+        text = params[:text]
+        mail = params[:email]
+        RestClient.post "https://api:key-6f9d977ac6efbee783f97373bba38760"\
+        "@api.mailgun.net/v3/aravinth.me/messages",
+        :from => "aravinththangasami@gmail.com",
+        :to => mail,
+        :subject => "Enter the code ,
+        :text => text
+        render :json => 'success'
+  end
+
    
 
 
