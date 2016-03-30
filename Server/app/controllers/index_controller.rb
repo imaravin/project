@@ -9,7 +9,7 @@ class IndexController < ApplicationController
       u.name=name
       u.password=password;
       u.save
-      render :json => "success"
+      render :json => {"value":"success"}
 
     end
 
