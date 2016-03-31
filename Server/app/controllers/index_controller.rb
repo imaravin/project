@@ -9,17 +9,17 @@ class IndexController < ApplicationController
       u.name=name
       u.password=password;
       u.save
-      render :json => {"value":"success"}
+      render :json => "success"
 
     end
 
 
       def signin
         text="fail"
-        name=params[:name]
+        email=params[:email]
         password=params[:password]
-        u=User.find_by(name:name)
-        if(u != nil && u.password==password)
+        u=User.find_by(email:name)
+        if(u != nil )
          text = "success"
         end
 
