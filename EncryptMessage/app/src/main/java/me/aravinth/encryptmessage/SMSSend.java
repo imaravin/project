@@ -21,8 +21,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -77,18 +80,30 @@ public class SMSSend extends AppCompatActivity {
 
             Log.e("--->","Enterinng back");
 
+            //encryption
             StringBuffer sb=new StringBuffer();
             try {
-                String IV = "AAAAAAAAAAAAAAAA";
-                Cipher cipher = Cipher.getInstance("AES");
-                SecretKeySpec key = new SecretKeySpec(mailtext.getBytes("UTF-8"), "AES");
-                cipher.init(Cipher.ENCRYPT_MODE, key,new IvParameterSpec(IV.getBytes("UTF-8")));
-                byte[] x=cipher.doFinal(msg.getBytes("UTF-8"));
-                for(byte y:x)
+                KeyGenerator KeyGen = KeyGenerator.getInstance("AES");
+                KeyGen.init(128);
+                SecretKey SecKey = new SecretKeySpec("1234567890123456".getBytes(), "AES");
+
+                Cipher AesCipher = Cipher.getInstance("AES");
+
+                System.out.println(SecKey);
+                byte[] byteText = "Your Plain Text Here".getBytes();
+
+                AesCipher.init(Cipher.ENCRYPT_MODE, SecKey);
+                byte[] byteCipherText = AesCipher.doFinal(byteText);
+
+                for(byte y:byteCipherText)
                     sb.append(y);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+
+
 
             Log.e("--->","Enterinng sms");
             SmsManager smsManager=SmsManager.getDefault();
