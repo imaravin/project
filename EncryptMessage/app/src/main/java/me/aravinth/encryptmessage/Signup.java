@@ -36,7 +36,7 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         context=this;
-        username =(EditText) findViewById(R.id.email);
+        username =(EditText) findViewById(R.id.emailsend);
         passwd1 =(EditText) findViewById(R.id.passwd1);
         passwd2 = (EditText)findViewById(R.id.passwd2);
         submit = (Button)findViewById(R.id.submit);
@@ -45,13 +45,10 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(passwd2.getText().toString().equals(passwd1.getText().toString()))
-                {
+                if (passwd2.getText().toString().equals(passwd1.getText().toString())) {
 
                     new SignUpTask(context).execute();
-                }
-                else
-                {
+                } else {
                     AlertDialog.Builder goLogin = new AlertDialog.Builder(context);
                     goLogin.setMessage("password not matching");
                     goLogin.setCancelable(false);

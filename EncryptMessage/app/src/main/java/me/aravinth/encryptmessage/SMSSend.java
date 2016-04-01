@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -22,11 +21,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
@@ -39,16 +35,17 @@ public class SMSSend extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smssend);
-        phoneno =(EditText) findViewById(R.id.phoneno);
-        email=(EditText)findViewById(R.id.email);
-        message =(EditText) findViewById(R.id.message);
+        phoneno =(EditText) findViewById(R.id.phonenosend);
+        email=(EditText)findViewById(R.id.emailsend);
+        message =(EditText) findViewById(R.id.messagesend);
         send=(Button)findViewById(R.id.sendText);
-        cancel=(Button)findViewById(R.id.cancel2);
-        keyspec =(EditText) findViewById(R.id.key);
+        cancel=(Button)findViewById(R.id.cncl);
+//        keyspec =(EditText) findViewById(R.id.keysend);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("--->", "Enterinng clikk");
                 new smssendTask().execute();
 
             }
@@ -61,7 +58,7 @@ public class SMSSend extends AppCompatActivity {
         String phone=phoneno.getText().toString();
         String msg=message.getText().toString();
         String mail=email.getText().toString();
-        String mailtext=keyspec.getText().toString();
+        String mailtext="Aravinth is pavam";
 
         protected void onPreExecute() {
             super.onPreExecute();
@@ -78,10 +75,12 @@ public class SMSSend extends AppCompatActivity {
             //key ll be generated and msg will be send
             // key has to be mailed
 
+            Log.e("--->","Enterinng back");
+
             StringBuffer sb=new StringBuffer();
             try {
                 String IV = "AAAAAAAAAAAAAAAA";
-                Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding", "SunJCE");
+                Cipher cipher = Cipher.getInstance("AES");
                 SecretKeySpec key = new SecretKeySpec(mailtext.getBytes("UTF-8"), "AES");
                 cipher.init(Cipher.ENCRYPT_MODE, key,new IvParameterSpec(IV.getBytes("UTF-8")));
                 byte[] x=cipher.doFinal(msg.getBytes("UTF-8"));
@@ -91,11 +90,12 @@ public class SMSSend extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-
+            Log.e("--->","Enterinng sms");
             SmsManager smsManager=SmsManager.getDefault();
-            smsManager.sendTextMessage(phone,null,new String(sb),null,null);
+            smsManager.sendTextMessage(phone,null,"AAANSJNA",null,null);
 
-            String url = "http://172.22.106.8:3000/index/sendmail?email="+mail+"&text="+sb.toString();
+            Log.e("--->", "Enterinng mail");
+            String url = "http://172.22.106.8:3000/index/sendmail?email="+mail+"&text=a"+sb.toString();
 
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();
