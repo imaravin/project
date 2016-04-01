@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            String url = "http://172.22.106.8:3000/index/signin?email="+uname+"&password="+passwd+"&name=cx";
+            String url = "http://localhost:3000/index/signin?email="+uname+"&password="+passwd+"&name=cx";
 
 
             StringBuilder builder = new StringBuilder();

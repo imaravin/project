@@ -62,12 +62,24 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:id="@+id/cancel"
+        android:text="@string/cancel"
+        android:id="@+id/cancel2"
         android:layout_alignBottom="@+id/sendText"
         android:layout_alignRight="@+id/message"
         android:layout_alignEnd="@+id/message"
         android:layout_toEndOf="@+id/sendText"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/key"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="0dp"
+        android:layout_alignRight="@+id/cancel2"
+        android:layout_alignEnd="@+id/cancel2"
+        android:hint="16 character key" />
 </RelativeLayout>
