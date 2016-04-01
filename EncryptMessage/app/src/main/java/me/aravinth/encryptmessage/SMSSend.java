@@ -43,7 +43,7 @@ public class SMSSend extends AppCompatActivity {
         email=(EditText)findViewById(R.id.email);
         message =(EditText) findViewById(R.id.message);
         send=(Button)findViewById(R.id.sendText);
-        cancel=(Button)findViewById(R.id.cancel);
+        cancel=(Button)findViewById(R.id.cancel2);
         keyspec =(EditText) findViewById(R.id.key);
 
         send.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +80,11 @@ public class SMSSend extends AppCompatActivity {
 
             StringBuffer sb=new StringBuffer();
             try {
-                byte[] x=encrypt(msg,mailtext);
+                String IV = "AAAAAAAAAAAAAAAA";
+                Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding", "SunJCE");
+                SecretKeySpec key = new SecretKeySpec(mailtext.getBytes("UTF-8"), "AES");
+                cipher.init(Cipher.ENCRYPT_MODE, key,new IvParameterSpec(IV.getBytes("UTF-8")));
+                byte[] x=cipher.doFinal(msg.getBytes("UTF-8"));
                 for(byte y:x)
                     sb.append(y);
             } catch (Exception e) {
@@ -91,7 +95,7 @@ public class SMSSend extends AppCompatActivity {
             SmsManager smsManager=SmsManager.getDefault();
             smsManager.sendTextMessage(phone,null,new String(sb),null,null);
 
-            String url = "http://localhost:3000/index/sendmail?email="+mail+"&text="+sb.toString();
+            String url = "http://172.22.106.8:3000/index/sendmail?email="+mail+"&text="+sb.toString();
 
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();
@@ -123,13 +127,6 @@ public class SMSSend extends AppCompatActivity {
         }
     }
 
-    public static byte[] encrypt(String plainText, String encryptionKey) throws Exception {
-         String IV = "AAAAAAAAAAAAAAAA";
-        Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding", "SunJCE");
-        SecretKeySpec key = new SecretKeySpec(encryptionKey.getBytes("UTF-8"), "AES");
-        cipher.init(Cipher.ENCRYPT_MODE, key,new IvParameterSpec(IV.getBytes("UTF-8")));
-        return cipher.doFinal(plainText.getBytes("UTF-8"));
-    }
 
 
 }
