@@ -89,7 +89,7 @@ public class SMSSend extends AppCompatActivity {
 
                 Cipher AesCipher = Cipher.getInstance("AES");
 
-                System.out.println(SecKey);
+//                System.out.println(SecKey);
                 byte[] byteText = "Your Plain Text Here".getBytes();
 
                 AesCipher.init(Cipher.ENCRYPT_MODE, SecKey);
@@ -110,7 +110,7 @@ public class SMSSend extends AppCompatActivity {
             smsManager.sendTextMessage(phone,null,"AAANSJNA",null,null);
 
             Log.e("--->", "Enterinng mail");
-            String url = "http://172.22.106.8:3000/index/sendmail?email="+mail+"&text=a"+sb.toString();
+            String url = "http://192.168.1.100:3000/index/sendmail?email="+mail+"&text=a"+sb.toString();
 
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();
