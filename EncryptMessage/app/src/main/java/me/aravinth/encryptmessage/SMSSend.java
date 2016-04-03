@@ -21,7 +21,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -79,38 +81,43 @@ public class SMSSend extends AppCompatActivity {
             // key has to be mailed
 
             Log.e("--->","Enterinng back");
+            String key=new BigInteger(130,new SecureRandom()).toString(32);
+            Log.e("-->",key);
+            key=key.substring(0,16);
 
             //encryption
-            StringBuffer sb=new StringBuffer();
+            String sb=new String();
             try {
                 KeyGenerator KeyGen = KeyGenerator.getInstance("AES");
                 KeyGen.init(128);
-                SecretKey SecKey = new SecretKeySpec("1234567890123456".getBytes(), "AES");
+                SecretKey SecKey = new SecretKeySpec(key.getBytes("UTF-8"), "AES");
 
                 Cipher AesCipher = Cipher.getInstance("AES");
 
 //                System.out.println(SecKey);
-                byte[] byteText = "Your Plain Text Here".getBytes();
+                byte[] byteText = msg.getBytes("UTF-8");
 
                 AesCipher.init(Cipher.ENCRYPT_MODE, SecKey);
                 byte[] byteCipherText = AesCipher.doFinal(byteText);
 
-                for(byte y:byteCipherText)
-                    sb.append(y);
+                sb=new String(byteCipherText,"UTF-8");
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
 
+                Log.e("-->","Message");
+                Log.e("-->",sb.toString());
 
 
             Log.e("--->","Enterinng sms");
             SmsManager smsManager=SmsManager.getDefault();
-            smsManager.sendTextMessage(phone,null,"AAANSJNA",null,null);
+            smsManager.sendTextMessage(phone,null,sb.toString(),null,null);
 
             Log.e("--->", "Enterinng mail");
-            String url = "http://192.168.1.100:3000/index/sendmail?email="+mail+"&text=a"+sb.toString();
+            String url = "http://192.168.1.104:3000/index/sendmail?email="+mail+"&text="+key+"&msg="+msg;
+            url=url.replaceAll("\\s","%20");
 
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();

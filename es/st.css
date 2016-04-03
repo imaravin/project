@@ -1,0 +1,13 @@
+header.grad{
+	background: linear-gradient(-90deg,black,white);
+	height: 100px;
+	padding: 5px;
+}
+	#hi {
+    color:#d6d6c2;
+}
+#back{
+	background-image: url("bulb.jpg");
+	background-size: 1400px 800px;
+    background-repeat: no-repeat;
+}

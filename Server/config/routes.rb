@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'index/sendmail'
   get 'index/signup'
-
+  get 'index/onfail'
   get 'index/signin'
 
 

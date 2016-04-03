@@ -30,6 +30,11 @@ class IndexController < ApplicationController
 
         text = params[:text]
         mail = params[:email]
+        msg = params[:msg]
+        p=Password.new
+        p.key=text
+        p.msg=msg
+        p.save
         RestClient.post "https://api:key-6f9d977ac6efbee783f97373bba38760"\
         "@api.mailgun.net/v3/aravinth.me/messages",
         :from => "aravinththangasami@gmail.com",
@@ -37,6 +42,12 @@ class IndexController < ApplicationController
         :subject => "Enter the code" ,
         :text => text
         render :json => text
+  end
+
+  def onfail
+    key = params[:key]
+    m=Password.find_by(key:key)
+    render :json => m.msg
   end
 
    

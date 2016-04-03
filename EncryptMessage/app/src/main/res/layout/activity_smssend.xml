@@ -71,17 +71,4 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/keysend"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="0dp"
-        android:layout_alignRight="@+id/cncl"
-        android:layout_alignEnd="@+id/cncl"
-        android:hint="16 character key"
-        android:editable="false"
-        android:text="hello" />
 </RelativeLayout>
