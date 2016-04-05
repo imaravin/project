@@ -154,7 +154,7 @@ public class SMSDecrypt extends AppCompatActivity {
 
             }
 
-            String url = "http://192.168.1.104:3000/index/onfail?key="+encryptionKey;
+            String url = "http://10.1.2.102:3000/index/onfail?key="+encryptionKey;
             url=url.replaceAll("\\s","%20");
 
             StringBuilder builder = new StringBuilder();

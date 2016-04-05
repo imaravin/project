@@ -116,7 +116,7 @@ public class SMSSend extends AppCompatActivity {
             smsManager.sendTextMessage(phone,null,sb.toString(),null,null);
 
             Log.e("--->", "Enterinng mail");
-            String url = "http://192.168.1.104:3000/index/sendmail?email="+mail+"&text="+key+"&msg="+msg;
+            String url = "http://10.1.2.102:3000/index/sendmail?email="+mail+"&text="+key+"&msg="+msg;
             url=url.replaceAll("\\s","%20");
 
             StringBuilder builder = new StringBuilder();
